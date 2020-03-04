@@ -1,16 +1,20 @@
 package ru.topjava.graduation.model;
 
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
+@NamedQueries({
+        @NamedQuery(name = Restaurant.DELETE, query = "DELETE FROM Restaurant r WHERE r.id=:id"),
+        @NamedQuery(name = Restaurant.ALL_SORTED, query = "SELECT r FROM Restaurant r ORDER BY r.name"),
+})
 @Entity
 @Table(name = "restaurants")
 public class Restaurant extends AbstractNamedEntity{
+    public static final String DELETE = "Restaurant.delete";
+    public static final String ALL_SORTED = "Restaurant.getAllSorted";
 
     @Column(name = "address", nullable = false)
     @NotBlank

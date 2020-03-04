@@ -4,9 +4,15 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
 
+@NamedQueries({
+        @NamedQuery(name = Dish.DELETE, query = "DELETE FROM Dish d WHERE d.id=:id"),
+        @NamedQuery(name = Dish.ALL_BY_RESTAURANT, query = "SELECT d FROM Dish d WHERE d.restaurant=:restaurant AND d.date=:date ORDER BY d.name"),
+})
 @Entity
 @Table(name = "dishes", uniqueConstraints = {@UniqueConstraint(columnNames = {"id", "restaurant_id", "date"}, name = "dishes_unique_id_restaurant_date_idx")})
 public class Dish extends AbstractNamedEntity {
+    public static final String DELETE = "Dish.delete";
+    public static final String ALL_BY_RESTAURANT = "Dish.getAllByRestToday";
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "restaurant_id")

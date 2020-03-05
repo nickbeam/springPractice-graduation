@@ -6,13 +6,11 @@ import java.util.Date;
 import java.util.List;
 
 public interface DishRepository {
-    Dish save(Dish dish);
+    Dish save(Dish dish, int restaurantId);
 
-    boolean delete(int id);
+    boolean delete(int id, int restaurantId);
 
-    Dish get(int id);
+    Dish get(int id, int restaurantId);
 
-    List<Dish> getAll(int restaurantId);
-
-    List<Dish> getBetween(int restaurantId, Date startDate, Date endDate);
+    List<Dish> getAll(int restaurantId, Date date);
 }

@@ -10,8 +10,6 @@ import org.springframework.test.context.jdbc.SqlConfig;
 import org.springframework.test.context.junit4.SpringRunner;
 import ru.topjava.graduation.model.Role;
 import ru.topjava.graduation.model.User;
-import ru.topjava.graduation.service.AbstractServiceTest;
-import ru.topjava.graduation.service.UserService;
 import ru.topjava.graduation.util.exception.NotFoundException;
 
 import java.util.Collections;

@@ -18,7 +18,7 @@ INSERT INTO user_roles (role, user_id) VALUES
 INSERT INTO restaurants (name, address, phone, email)
 VALUES ('Бриллиантовая рука', 'Невский д.55', '+7(812)3223232', 'info@br.ru'),
        ('Чиллаут снек бар', 'Большой Сампсониевский д.4', '+7(812)5558877', 'info@chill.ru'),
-       ('Элит', 'Набережная реки Мойки д.20', '+7(812)4448899', 'info@elit.ru');
+       ('Элит', 'Набережная реки Мойки д.20', '+7(812)4448899', 'info@elite.ru');
 
 INSERT INTO dishes (restaurant_id, name, price, date)
 VALUES (100003, 'Стейк', 1000, '2020-03-01'),

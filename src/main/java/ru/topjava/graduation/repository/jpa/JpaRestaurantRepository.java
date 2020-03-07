@@ -23,7 +23,7 @@ public class JpaRestaurantRepository implements RestaurantRepository {
             em.persist(restaurant);
             return restaurant;
         } else {
-            return em.merge(restaurant);
+            return get(restaurant.getId()) == null ? null : em.merge(restaurant);
         }
     }
 

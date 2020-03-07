@@ -56,17 +56,20 @@ public class JpaVoteRepository implements VoteRepository {
     }
 
     @Override
-    public Vote getByUser(int userId, LocalDateTime startDateTime, LocalDateTime endDateTime) {
-        List<Vote> votes = em.createNamedQuery(Vote.GET_BY_USER, Vote.class)
+    public List<Vote> getByUser(int userId, LocalDateTime startDateTime, LocalDateTime endDateTime) {
+        return em.createNamedQuery(Vote.GET_BY_USER, Vote.class)
                 .setParameter("userId", userId)
                 .setParameter("startDateTime", startDateTime)
                 .setParameter("endDateTime", endDateTime)
                 .getResultList();
-        return DataAccessUtils.singleResult(votes);
     }
 
     @Override
-    public int getCount(int restaurantId) {
-        return em.createNamedQuery(Vote.GET_COUNT).setParameter("restaurantId", restaurantId).executeUpdate();
+    public int getCount(int restaurantId, LocalDateTime startDateTime, LocalDateTime endDateTime) {
+        return em.createNamedQuery(Vote.GET_COUNT)
+                .setParameter("restaurantId", restaurantId)
+                .setParameter("startDateTime", startDateTime)
+                .setParameter("endDateTime", endDateTime)
+                .executeUpdate();
     }
 }

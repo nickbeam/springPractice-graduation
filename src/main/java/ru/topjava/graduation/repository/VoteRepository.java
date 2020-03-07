@@ -3,6 +3,7 @@ package ru.topjava.graduation.repository;
 import ru.topjava.graduation.model.Vote;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 public interface VoteRepository {
     Vote save(Vote vote, int userId, int restaurantId);
@@ -11,7 +12,7 @@ public interface VoteRepository {
 
     Vote get(int id, int userId, int restaurantId);
 
-    Vote getByUser(int userId, LocalDateTime startDateTime, LocalDateTime endDateTime);
+    List<Vote> getByUser(int userId, LocalDateTime startDateTime, LocalDateTime endDateTime);
 
-    int getCount(int restaurantId);
+    int getCount(int restaurantId, LocalDateTime startDateTime, LocalDateTime endDateTime);
 }

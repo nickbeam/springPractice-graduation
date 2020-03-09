@@ -32,7 +32,9 @@ public class RestaurantServiceTest extends AbstractServiceTest {
     @Test
     public void create() {
         Restaurant newRestaurant = getCreated();
-        service.create(newRestaurant);
+        Restaurant created = service.create(newRestaurant);
+        newRestaurant.setId(created.getId());
+        assertMatch(newRestaurant, created);
         assertMatch(service.getAll(), newRestaurant, REST_BRILL, REST_CHILL, REST_ELITE);
     }
 

@@ -10,7 +10,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 
-import static ru.topjava.graduation.util.ValidationUtil.checkNotFoundWithId;
+import static ru.topjava.graduation.util.ValidationUtil.*;
 
 @Service
 public class VoteService {
@@ -23,7 +23,7 @@ public class VoteService {
 
     public Vote create(Vote vote, int userId, int restaurantId) {
         Assert.notNull(vote, "vote must not be null");
-        return repository.save(vote, userId, restaurantId);
+        return checkNotFound(isChangeable(userId) ? repository.save(vote, userId, restaurantId) : null, "present fields");
     }
 
     public void update(Vote vote, int userId, int restaurantId) {

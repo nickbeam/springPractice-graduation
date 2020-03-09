@@ -23,10 +23,14 @@ public class JpaVoteRepository implements VoteRepository {
     @Override
     @Transactional
     public Vote save(Vote vote, int userId, int restaurantId) {
-        if (vote.getUser() == null) {
+        if (vote.isNew() && vote.getUser() == null) {
             vote.setUser(em.getReference(User.class, userId));
-        } else if (vote.getRestaurant() == null) {
-             vote.setRestaurant(em.getReference(Restaurant.class, restaurantId));
+        }
+        if (vote.isNew() && vote.getRestaurant() == null) {
+            vote.setRestaurant(em.getReference(Restaurant.class, restaurantId));
+        }
+        if (vote.getUser().getId() != userId || vote.getRestaurant().getId() != restaurantId) {
+            return null;
         }
         if (vote.isNew()) {
             em.persist(vote);

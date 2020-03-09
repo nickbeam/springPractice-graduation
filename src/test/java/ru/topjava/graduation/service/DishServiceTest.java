@@ -33,9 +33,11 @@ public class DishServiceTest extends AbstractServiceTest {
 
     @Test
     public void create() {
-        Dish dish = DishTestData.getCreated();
-        service.create(dish, REST_CHILL_ID);
-        assertMatch(service.getAll(REST_CHILL_ID), dish, DISH04, DISH06, DISH05);
+        Dish newDish = DishTestData.getCreated();
+        Dish created = service.create(newDish, REST_CHILL_ID);
+        newDish.setId(created.getId());
+        assertMatch(newDish, created);
+        assertMatch(service.getAll(REST_CHILL_ID), newDish, DISH04, DISH06, DISH05);
     }
 
     @Test

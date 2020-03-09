@@ -37,6 +37,7 @@ public class JpaDishRepository implements DishRepository {
     @Transactional
     public boolean delete(int id, int restaurantId) {
         return em.createNamedQuery(Dish.DELETE)
+                .setParameter("id", id)
                 .setParameter("restaurantId", restaurantId)
                 .executeUpdate() != 0;
     }

@@ -5,10 +5,10 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 @NamedQueries({
-        @NamedQuery(name = Vote.DELETE, query = "DELETE FROM Vote v WHERE v.id=:id AND v.user.id=:userId AND v.restaurant.id=:restaurantId"),
-        @NamedQuery(name = Vote.GET, query = "SELECT v FROM Vote v WHERE v.id=:id AND v.user.id=:userId AND v.restaurant.id=:restaurantId ORDER BY v.dateTime"),
-        @NamedQuery(name = Vote.GET_BY_USER, query = "SELECT v FROM Vote v WHERE v.user.id=:userId AND v.dateTime >=: startDateTime AND v.dateTime <: endDateTime ORDER BY v.dateTime"),
-        @NamedQuery(name = Vote.GET_COUNT, query = "SELECT COUNT (v) FROM Vote v WHERE v.restaurant.id=:restaurantId AND v.dateTime >=: startDateTime AND v.dateTime <: endDateTime ORDER BY v.dateTime"),
+        @NamedQuery(name = Vote.DELETE, query = "DELETE FROM Vote v WHERE v.id=:id AND v.user.id = :userId AND v.restaurant.id = :restaurantId"),
+        @NamedQuery(name = Vote.GET, query = "SELECT v FROM Vote v WHERE v.id=:id AND v.user.id = :userId AND v.restaurant.id = :restaurantId ORDER BY v.dateTime"),
+        @NamedQuery(name = Vote.GET_BY_USER, query = "SELECT v FROM Vote v WHERE v.user.id = :userId AND v.dateTime >= :startDateTime AND v.dateTime < :endDateTime ORDER BY v.dateTime"),
+        @NamedQuery(name = Vote.GET_COUNT, query = "SELECT COUNT (v) FROM Vote v WHERE v.restaurant.id = :restaurantId AND v.dateTime >= :startDateTime AND v.dateTime < :endDateTime ORDER BY v.dateTime"),
 })
 @Entity
 @Table(name = "votes", uniqueConstraints = {@UniqueConstraint(columnNames = {"user_id", "date_time"}, name = "votes_unique_user_datetime_idx")})

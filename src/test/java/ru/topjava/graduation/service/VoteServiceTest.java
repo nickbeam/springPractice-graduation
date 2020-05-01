@@ -13,7 +13,6 @@ import ru.topjava.graduation.VoteTestData;
 import ru.topjava.graduation.model.Vote;
 import ru.topjava.graduation.util.exception.NotFoundException;
 
-import static ru.topjava.graduation.DishTestData.DISH09_ID;
 import static ru.topjava.graduation.RestaurantTestData.*;
 import static ru.topjava.graduation.UserTestData.ADMIN_ID;
 import static ru.topjava.graduation.UserTestData.USER_ID;

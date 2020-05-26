@@ -26,7 +26,7 @@ public interface CrudVoteRepository extends JpaRepository<Vote, Integer> {
                          @Param("startDateTime") LocalDateTime startDateTime,
                          @Param("endDateTime") LocalDateTime endDateTime);
 
-    @Query("SELECT COUNT (v) FROM Vote v WHERE v.restaurant.id = :restaurantId AND v.dateTime >= :startDateTime AND v.dateTime < :endDateTime ORDER BY v.dateTime")
+    @Query("SELECT COUNT (v) FROM Vote v WHERE v.restaurant.id = :restaurantId AND v.dateTime >= :startDateTime AND v.dateTime < :endDateTime")
     int getCount(@Param("restaurantId") int restaurantId,
                         @Param("startDateTime") LocalDateTime startDateTime,
                         @Param("endDateTime") LocalDateTime endDateTime);

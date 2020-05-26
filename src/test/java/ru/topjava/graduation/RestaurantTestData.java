@@ -9,9 +9,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static ru.topjava.graduation.model.AbstractBaseEntity.START_SEQ;
 
 public class RestaurantTestData {
-    public static final int REST_BRILL_ID = START_SEQ + 3;
-    public static final int REST_CHILL_ID = START_SEQ + 4;
-    public static final int REST_ELITE_ID = START_SEQ + 5;
+    public static final int REST_BRILL_ID = START_SEQ + 4;
+    public static final int REST_CHILL_ID = START_SEQ + 5;
+    public static final int REST_ELITE_ID = START_SEQ + 6;
     public static final int REST_WRONG_ID = 999999;
 
     public static final Restaurant REST_BRILL =

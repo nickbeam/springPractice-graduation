@@ -24,16 +24,15 @@ public class DataJpaVoteRepository implements VoteRepository {
 
     @Override
     public Vote save(Vote vote, int userId, int restaurantId) {
-//        if (!vote.isNew() && (get(vote.getId(), ))) {
-//
-//        }
-//        if (vote.getUser().getId() != userId || vote.getRestaurant().getId() != restaurantId) {
-//            return null;
-//        }
-//        vote.setUser(crudUserRepository.getOne(userId));
-//        vote.setRestaurant(crudRestaurantRepository.getOne(restaurantId));
-//        return crudRepository.save(vote);
-        return null;
+        if (!vote.isNew() && get(vote.getId(), vote.getUser().getId(), vote.getRestaurant().getId()) == null) {
+            return null;
+        }
+        if (!vote.isNew() && vote.getUser().getId() != userId) {
+            return null;
+        }
+        vote.setDateTime(LocalDateTime.now());
+        vote.setRestaurant(crudRestaurantRepository.getOne(restaurantId));
+        return crudRepository.save(vote);
     }
 
     @Override

@@ -2,7 +2,9 @@ package ru.topjava.graduation;
 
 import ru.topjava.graduation.model.Vote;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.Arrays;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -21,26 +23,28 @@ public class VoteTestData {
     15-17
      */
 
-    public static final int VOTE01_ID = START_SEQ + 15;
-    public static final int VOTE02_ID = START_SEQ + 16;
-    public static final int VOTE03_ID = START_SEQ + 17;
+    public static final int VOTE01_ID = START_SEQ + 16;
+    public static final int VOTE02_ID = START_SEQ + 17;
+    public static final int VOTE03_ID = START_SEQ + 18;
 
-    public static final LocalDateTime CURRENT_DATE_TIME = LocalDateTime.now();
+    public static final LocalDateTime TEN = LocalDateTime.of(LocalDate.now(), LocalTime.of(10,0,0));
+    public static final LocalDateTime ELEVEN = LocalDateTime.of(LocalDate.now(), LocalTime.of(11,0,0));
+    public static final LocalDateTime SIXTEEN = LocalDateTime.of(LocalDate.now(), LocalTime.of(11,0,0));
 
-    public static final Vote VOTE01 = new Vote(VOTE01_ID, CURRENT_DATE_TIME, USER, REST_BRILL);
-    public static final Vote VOTE02 = new Vote(VOTE02_ID, CURRENT_DATE_TIME, ADMIN, REST_BRILL);
-    public static final Vote VOTE03 = new Vote(VOTE03_ID, CURRENT_DATE_TIME, GOURMET, REST_ELITE);
+    public static final Vote VOTE01 = new Vote(VOTE01_ID, TEN, USER, REST_BRILL);
+    public static final Vote VOTE02 = new Vote(VOTE02_ID, ELEVEN, ADMIN, REST_BRILL);
+    public static final Vote VOTE03 = new Vote(VOTE03_ID, SIXTEEN, GOURMET, REST_ELITE);
 
     public static Vote getCreated() {
-        return new Vote(null, CURRENT_DATE_TIME, ADMIN, REST_CHILL);
+        return new Vote(null, LocalDateTime.now(), TESTUSER, REST_CHILL);
     }
 
     public static Vote getUpdated() {
-        return new Vote(VOTE01_ID, CURRENT_DATE_TIME, USER, REST_ELITE);
+        return new Vote(VOTE01_ID, LocalDateTime.now(), USER, REST_ELITE);
     }
 
     public static void assertMatch(Vote actual, Vote expected) {
-        assertThat(actual).isEqualToIgnoringGivenFields(expected, "restaurant", "user");
+        assertThat(actual).isEqualToIgnoringGivenFields(expected, "restaurant", "user", "dateTime");
     }
 
     public static void assertMatch(Iterable<Vote> actual, Vote... expected) {
@@ -48,6 +52,6 @@ public class VoteTestData {
     }
 
     public static void assertMatch(Iterable<Vote> actual, Iterable<Vote> expected) {
-        assertThat(actual).usingElementComparatorIgnoringFields("restaurant", "user").isEqualTo(expected);
+        assertThat(actual).usingElementComparatorIgnoringFields("user", "dateTime", "restaurant").isEqualTo(expected);
     }
 }

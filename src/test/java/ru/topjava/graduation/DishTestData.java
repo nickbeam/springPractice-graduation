@@ -12,17 +12,17 @@ import static ru.topjava.graduation.model.AbstractBaseEntity.START_SEQ;
 
 public class DishTestData {
 
-    public static final int DISH01_ID = START_SEQ + 6;
-    public static final int DISH02_ID = START_SEQ + 7;
-    public static final int DISH03_ID = START_SEQ + 8;
+    public static final int DISH01_ID = START_SEQ + 7;
+    public static final int DISH02_ID = START_SEQ + 8;
+    public static final int DISH03_ID = START_SEQ + 9;
 
-    public static final int DISH04_ID = START_SEQ + 9;
-    public static final int DISH05_ID = START_SEQ + 10;
-    public static final int DISH06_ID = START_SEQ + 11;
+    public static final int DISH04_ID = START_SEQ + 10;
+    public static final int DISH05_ID = START_SEQ + 11;
+    public static final int DISH06_ID = START_SEQ + 12;
 
-    public static final int DISH07_ID = START_SEQ + 12;
-    public static final int DISH08_ID = START_SEQ + 13;
-    public static final int DISH09_ID = START_SEQ + 14;
+    public static final int DISH07_ID = START_SEQ + 13;
+    public static final int DISH08_ID = START_SEQ + 14;
+    public static final int DISH09_ID = START_SEQ + 15;
 
     public static final int DISH_WRONG_ID = 999999;
 

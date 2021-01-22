@@ -1,6 +1,7 @@
 package ru.topjava.graduation.model;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 
@@ -31,6 +32,10 @@ public class Vote extends AbstractBaseEntity {
     private Restaurant restaurant;
 
     public Vote() {
+    }
+
+    public Vote(LocalDateTime dateTime, User user, Restaurant restaurant) {
+        this(null, dateTime, user, restaurant);
     }
 
     public Vote(Integer id, LocalDateTime dateTime, User user, Restaurant restaurant) {

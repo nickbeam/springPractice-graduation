@@ -9,6 +9,7 @@ import ru.topjava.graduation.repository.VoteRepository;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.List;
 
 import static ru.topjava.graduation.util.ValidationUtil.*;
 
@@ -37,6 +38,19 @@ public class VoteService {
 
     public Vote get(int id, int userId, int restaurantId) {
         return checkNotFoundWithId(repository.get(id, userId, restaurantId), id);
+    }
+
+    public List<Vote> getUserVoteToday(int userId) {
+        return repository.getByUser(userId,
+                LocalDateTime.of(LocalDate.now(), LocalTime.MIN),
+                LocalDateTime.of(LocalDate.now(), LocalTime.MAX));
+    }
+
+    public boolean isVotedToday(int userId) {
+        return repository.getByUser(userId,
+                LocalDateTime.of(LocalDate.now(), LocalTime.MIN),
+                LocalDateTime.of(LocalDate.now(), LocalTime.MAX))
+                .size() > 0;
     }
 
     public boolean isChangeable(int userId) {

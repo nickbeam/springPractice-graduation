@@ -12,23 +12,23 @@ public class VoteRestController extends AbstractVoteController {
     static final String REST_URL = "/rest/votes";
 
     @Override
-    public Vote create(Vote vote, int userId, int restaurantId) {
-        return super.create(vote, userId, restaurantId);
+    public Vote create(int restaurantId) {
+        return super.create(restaurantId);
     }
 
     @Override
-    public void update(Vote vote, int id, int userId, int restaurantId) {
-        super.update(vote, id, userId, restaurantId);
+    public void update(int restaurantId) {
+        super.update(restaurantId);
     }
 
     @Override
-    public void delete(int id, int userId, int restaurantId) {
-        super.delete(id, userId, restaurantId);
+    public void delete(int id, int restaurantId) {
+        super.delete(id, restaurantId);
     }
 
     @Override
-    public Vote get(int id, int userId, int restaurantId) {
-        return super.get(id, userId, restaurantId);
+    public Vote get(int id, int restaurantId) {
+        return super.get(id, restaurantId);
     }
 
     @Override

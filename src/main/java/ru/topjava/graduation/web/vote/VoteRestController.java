@@ -26,7 +26,7 @@ public class VoteRestController extends AbstractVoteController {
 
     @Override
     @GetMapping("/{restaurantId}")
-    public int getCount(int restaurantId) {
+    public int getCount(@PathVariable int restaurantId) {
         return super.getCount(restaurantId);
     }
 }

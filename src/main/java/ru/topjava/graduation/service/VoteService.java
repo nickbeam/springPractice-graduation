@@ -24,12 +24,14 @@ public class VoteService {
 
     public Vote create(Vote vote, int userId, int restaurantId) {
         Assert.notNull(vote, "vote must not be null");
-        return checkNotFound(isChangeable(userId) ? repository.save(vote, userId, restaurantId) : null, "present fields");
+        return checkNotFound(repository.save(vote, userId, restaurantId), "present fields");
     }
 
     public void update(Vote vote, int userId, int restaurantId) {
         Assert.notNull(vote, "vote must not be null");
-        checkNotFoundWithId(repository.save(vote, userId, restaurantId), vote.getId());
+        if (isChangeable(userId)) {
+            checkNotFoundWithId(repository.save(vote, userId, restaurantId), vote.getId());
+        }
     }
 
     public void delete(int id, int userId, int restaurantId) {
@@ -54,10 +56,7 @@ public class VoteService {
     }
 
     public boolean isChangeable(int userId) {
-        return repository.getByUser(userId,
-                LocalDateTime.of(LocalDate.now(), Vote.TIME_CHANGE_MIND),
-                LocalDateTime.of(LocalDate.now(), LocalTime.MAX))
-                .isEmpty();
+        return getUserVoteToday(userId).isEmpty() || LocalTime.now().isBefore(Vote.TIME_CHANGE_MIND);
     }
 
     public int getCount(int restaurantId) {

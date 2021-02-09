@@ -41,9 +41,9 @@ public class VoteService {
     }
 
     public List<Vote> getUserVoteToday(int userId) {
-        return repository.getByUser(userId,
+        return checkVoteIsSingleToday(repository.getByUser(userId,
                 LocalDateTime.of(LocalDate.now(), LocalTime.MIN),
-                LocalDateTime.of(LocalDate.now(), LocalTime.MAX));
+                LocalDateTime.of(LocalDate.now(), LocalTime.MAX)));
     }
 
     public boolean isVotedToday(int userId) {

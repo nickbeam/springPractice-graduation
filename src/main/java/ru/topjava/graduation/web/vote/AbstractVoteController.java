@@ -7,11 +7,9 @@ import ru.topjava.graduation.model.Vote;
 import ru.topjava.graduation.service.RestaurantService;
 import ru.topjava.graduation.service.UserService;
 import ru.topjava.graduation.service.VoteService;
-import ru.topjava.graduation.util.ValidationUtil;
 
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 import static ru.topjava.graduation.web.SecurityUtil.authUserId;
@@ -36,21 +34,15 @@ public abstract class AbstractVoteController {
             Vote vote = new Vote(LocalDateTime.now(), userService.get(userId), restaurantService.get(restaurantId));
             service.create(vote, userId, restaurantId);
         } else {
-            service.update(votes.get(0), userId, restaurantId);
+            service.update(votes.stream().findFirst().orElse(null), userId, restaurantId);
         }
     }
 
-    public void delete(int id, int restaurantId) {
-        log.info("delete vote with id = {} for restaurant with id = {}", id, restaurantId);
-        int userId = authUserId();
-        service.delete(id, userId, restaurantId);
-    }
-
-    public Vote getUserVote() {
+    public Vote getUserVoteToday() {
         int userId = authUserId();
         log.info("get user with id = {} vote today", userId);
         List<Vote> votes = service.getUserVoteToday(userId);
-        return ValidationUtil.checkNotFound(votes.get(0), "user vote for today not found");
+        return votes.stream().findFirst().orElse(null);
     }
 
     public int getCount(int restaurantId) {

@@ -2,11 +2,22 @@ package ru.topjava.graduation.util;
 
 
 import ru.topjava.graduation.model.AbstractBaseEntity;
+import ru.topjava.graduation.model.Vote;
 import ru.topjava.graduation.util.exception.NotFoundException;
+import ru.topjava.graduation.util.exception.WrongVoteException;
+
+import java.util.List;
 
 public class ValidationUtil {
 
     private ValidationUtil() {
+    }
+
+    public static List<Vote> checkVoteIsSingleToday(List<Vote> list) {
+        if (list.size() > 1) {
+            throw new WrongVoteException("Duplicate user votes per date");
+        }
+        return list;
     }
 
     public static <T> T checkNotFoundWithId(T object, int id) {

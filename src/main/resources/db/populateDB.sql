@@ -29,7 +29,7 @@ VALUES (100004, 'Стейк', 1000, CURRENT_DATE),
 
        (100005, 'Гренки', 150, CURRENT_DATE),
        (100005, 'Чипсы', 90, CURRENT_DATE),
-       (100005, 'Нагитсы', 210, CURRENT_DATE),
+       (100005, 'Наггетсы', 210, CURRENT_DATE),
 
        (100006, 'Оленина', 900, CURRENT_DATE),
        (100006, 'Карп', 1200, CURRENT_DATE),

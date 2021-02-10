@@ -39,7 +39,11 @@ public class DishService {
         return checkNotFoundWithId(repository.get(id, restaurantId), id);
     }
 
-    public List<Dish> getAll(int restaurantId) {
-        return repository.getAll(restaurantId, new Date());
+    public List<Dish> getAllByRestaurant(int restaurantId) {
+        return repository.getAllByRestaurant(restaurantId, new Date());
+    }
+
+    public List<Dish> getAllWithRestaurants() {
+        return repository.getAllWithRestaurants(new Date());
     }
 }

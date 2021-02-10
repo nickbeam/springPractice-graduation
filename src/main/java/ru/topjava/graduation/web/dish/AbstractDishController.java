@@ -40,8 +40,13 @@ public abstract class AbstractDishController {
         return service.get(id, restaurantId);
     }
 
-    public List<Dish> getAll(int restaurantId) {
+    public List<Dish> getAllByRestaurant(int restaurantId) {
         log.info("getAll dishes from restaurant with id = {}", restaurantId);
-        return service.getAll(restaurantId);
+        return service.getAllByRestaurant(restaurantId);
+    }
+
+    public List<Dish> getAllWithRestaurants() {
+        log.info("getAll dishes with restaurants for today");
+        return service.getAllWithRestaurants();
     }
 }

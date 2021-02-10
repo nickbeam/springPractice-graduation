@@ -37,7 +37,7 @@ public class DishServiceTest extends AbstractServiceTest {
         Dish created = service.create(newDish, REST_CHILL_ID);
         newDish.setId(created.getId());
         assertMatch(newDish, created);
-        assertMatch(service.getAll(REST_CHILL_ID), newDish, DISH04, DISH06, DISH05);
+        assertMatch(service.getAllByRestaurant(REST_CHILL_ID), newDish, DISH04, DISH06, DISH05);
     }
 
     @Test
@@ -57,7 +57,7 @@ public class DishServiceTest extends AbstractServiceTest {
     @Test
     public void delete() {
         service.delete(DISH01_ID, REST_BRILL_ID);
-        assertMatch(service.getAll(REST_BRILL_ID), DISH02, DISH03);
+        assertMatch(service.getAllByRestaurant(REST_BRILL_ID), DISH02, DISH03);
     }
 
     @Test
@@ -82,6 +82,6 @@ public class DishServiceTest extends AbstractServiceTest {
 
     @Test
     public void getAll() {
-        assertMatch(service.getAll(REST_CHILL_ID), DISH04, DISH06, DISH05);
+        assertMatch(service.getAllByRestaurant(REST_CHILL_ID), DISH04, DISH06, DISH05);
     }
 }

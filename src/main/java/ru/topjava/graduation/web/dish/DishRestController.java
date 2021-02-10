@@ -45,7 +45,13 @@ public class DishRestController extends AbstractDishController {
 
     @Override
     @GetMapping("/{restaurantId}")
-    public List<Dish> getAll(@PathVariable int restaurantId) {
-        return super.getAll(restaurantId);
+    public List<Dish> getAllByRestaurant(@PathVariable int restaurantId) {
+        return super.getAllByRestaurant(restaurantId);
+    }
+
+    @Override
+    @GetMapping
+    public List<Dish> getAllWithRestaurants() {
+        return super.getAllWithRestaurants();
     }
 }

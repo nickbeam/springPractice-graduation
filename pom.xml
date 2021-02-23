@@ -18,7 +18,7 @@
 
         <spring.version>5.2.0.RELEASE</spring.version>
         <spring-data-jpa.version>2.2.0.RELEASE</spring-data-jpa.version>
-        <jackson-json.version>2.10.1</jackson-json.version>
+        <jackson-json.version>2.12.1</jackson-json.version>
         <tomcat.version>9.0.27</tomcat.version>
 
         <!-- Logging -->
@@ -29,7 +29,7 @@
         <postgresql.version>42.2.8</postgresql.version>
         <hsqldb.version>2.5.0</hsqldb.version>
         <!--    Tests  -->
-        <junit.version>4.12</junit.version>
+        <junit.version>4.13.1</junit.version>
 
         <!-- Hibernate -->
         <hibernate.version>5.4.7.Final</hibernate.version>
